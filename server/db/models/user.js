@@ -13,7 +13,6 @@ const User = db.define('user', {
   fullName: {
     type: Sequelize.STRING
   },
-
   userName: {
     type: Sequelize.STRING
   },

@@ -2,19 +2,12 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const CreditCard = db.define('creditCard', {
-  firstName: {
+  fullName: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  middleName: {
-    type: Sequelize.STRING
   },
   creditCardNumber: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     allowNull: false,
     validate: {
       isCreditCard: true

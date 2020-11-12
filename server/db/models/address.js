@@ -2,16 +2,9 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Address = db.define('Address', {
-  firstName: {
+  fullName: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  middleName: {
-    type: Sequelize.STRING
   },
   street: {
     type: Sequelize.STRING,
@@ -34,9 +27,7 @@ const Address = db.define('Address', {
     allowNull: false
   },
   addressType: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    defaultValue: 'Shipping'
+    type: Sequelize.ENUM('Shipping', 'Billing')
   }
 })
 
