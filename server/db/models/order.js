@@ -3,18 +3,19 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
-  status: {
-    type: Sequelize.ENUM('Current Cart', 'Old Order')
-  },
+  //   status: {
+  //     cart or order history
+  //   },
   timestamp: {
     type: Sequelize.DATE,
     defaultValue: NOW
   },
   deliveryStatus: {
-    type: Sequelize.ENUM('Pending', 'Shipped', 'Delivered')
+    type: Sequelize.ENUM,
+    defaultValue: 'Pending'
   },
   overallPrice: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     defaultValue: 0
   }
 })

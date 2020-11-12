@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Sequelize = require('sequelize')
-const {User, Address, Order, CreditCard, Product} = require('../db/models')
+const {User} = require('../db/models')
 const Op = Sequelize.Op
 
 router.get('/', async (req, res, next) => {
@@ -22,24 +22,7 @@ router.get('/:userId', async (req, res, next) => {
     const user = await User.findAll({
       where: {
         id: {[Op.eq]: req.params.userId}
-      },
-      include: [
-        {
-          model: Address,
-          where: {userId: req.params.userId}
-        },
-        {
-          model: Order,
-          where: {userId: req.params.userId},
-          include: {
-            model: Product
-          }
-        },
-        {
-          model: CreditCard,
-          where: {userId: req.params.userId}
-        }
-      ]
+      }
     })
     res.json(user)
   } catch (error) {
